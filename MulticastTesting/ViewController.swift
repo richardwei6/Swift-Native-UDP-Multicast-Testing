@@ -1,26 +1,29 @@
 //
-//  ViewController.swift
-//  MulticastTesting
+//  mainView.swift
+//  Omegacam-ios
 //
-//  Created by Richard Wei on 2/17/21.
+//  Created by Richard Wei on 11/23/20.
 //
-
 import UIKit
+import AVFoundation
 import Network
 
 class ViewController: UIViewController {
-
-    var group : NWConnectionGroup?;
+    
+    var group: NWConnectionGroup?;
     
     @objc func sendData(){
-        group?.send(content: "Test".data(using: .utf8)){ (error) in
-            print("[NWConnectionGroup][sendData] complete with error \(String(describing: error?.localizedDescription))");
+        //print("sent - \(communication.send("Test".data(using: .utf8)!))");
+        print("got button press")
+        let groupSendContent = Data("helloAll_from_iPhone11ProSim".utf8)
+        group?.send(content: groupSendContent) { (error) in
+            print("[NWConnectionGroup][sendData] complete with error \(String(describing: error?.localizedDescription))")
         }
     }
+
     
     override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        super.viewDidLoad();
         
         guard let multicast = try? NWMulticastGroup(for: [ .hostPort(host: "224.0.0.1", port: 28650) ]) else {
             fatalError("[NWConnectionGroup] Could not create NWMulticastGroup")
@@ -65,10 +68,13 @@ class ViewController: UIViewController {
                 break
             }
         }
-        group?.start(queue: .main);
+        group?.start(queue: .main)
         
-        let testButton = UIButton(frame: CGRect(x: 0, y: 100, width: 100, height: 50));
-        testButton.backgroundColor = UIColor.blue;
+        self.view.backgroundColor = UIColor.blue;
+        
+        let testButton = UIButton(frame: CGRect(x: UIScreen.main.bounds.width / 2, y: UIScreen.main.bounds.height/2, width: 100, height: 50));
+        testButton.backgroundColor = .black;
+        
         testButton.addTarget(self, action: #selector(sendData), for: .touchUpInside);
         
         self.view.addSubview(testButton);
@@ -76,5 +82,5 @@ class ViewController: UIViewController {
     }
 
 
+    
 }
-

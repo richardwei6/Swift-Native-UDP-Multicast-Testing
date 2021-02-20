@@ -58,6 +58,7 @@
 		33C3B2BC25DE4B350056EE46 /* MulticastTesting */ = {
 			isa = PBXGroup;
 			children = (
+				33C3B2D225DE4C3A0056EE46 /* MulticastTesting.entitlements */,
 				33C3B2BD25DE4B350056EE46 /* AppDelegate.swift */,
 				33C3B2BF25DE4B350056EE46 /* SceneDelegate.swift */,
 				33C3B2C125DE4B350056EE46 /* ViewController.swift */,
@@ -65,7 +66,6 @@
 				33C3B2C625DE4B360056EE46 /* Assets.xcassets */,
 				33C3B2C825DE4B360056EE46 /* LaunchScreen.storyboard */,
 				33C3B2CB25DE4B360056EE46 /* Info.plist */,
-				33C3B2D225DE4C3A0056EE46 /* MulticastTesting.entitlements */,
 			);
 			path = MulticastTesting;
 			sourceTree = "<group>";
